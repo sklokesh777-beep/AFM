@@ -479,7 +479,7 @@ def parse_markdown(text: str, styles: dict[str, ParagraphStyle], frame_width: fl
                     break
                 item_text = match.group(1)
                 if check:
-                    mark = "☑" if check.group(1).lower() == "x" else "□"
+                    mark = "[x]" if check.group(1).lower() == "x" else "[ ]"
                     item_text = f"{mark} {check.group(2)}"
                 items.append(
                     ListItem(

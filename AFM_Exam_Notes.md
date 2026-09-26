@@ -12,6 +12,7 @@
 |---|---|---|
 | t, n | time period; total periods/project life | T0 is now; T1 is end of period 1 unless stated |
 | CFₜ | net cash flow at time t | inflow +; outflow − |
+| Bₜ | deposit at the beginning of period t | B₁ is paid at T0 |
 | PV₀, FVₙ | value now; value at end of n | always state valuation date |
 | r, k | return/discount rate per period | match rate period to cash-flow period |
 | PMT | equal periodic cash flow | ordinary annuity means period-end |
@@ -39,16 +40,17 @@
 | Lump-sum PV | PV₀ = FVₙ/(1+r)ⁿ | discounting moves left |
 | Nominal j, m compounds/year | FV = PV(1+j/m)ᵐⁿ | j is assumed nominal |
 | Uneven FV, end deposits | FVₙ = Σ CFₜ(1+r)ⁿ⁻ᵗ | exponents n−1 down to 0 |
-| Uneven FV, beginning deposits | FVₙ = Σ CFₜ(1+r)ⁿ⁻ᵗ⁺¹ | **Use this correct form:** exponents n down to 1 |
+| Uneven FV, beginning deposits | FVₙ = Σ Bₜ(1+r)ⁿ⁻ᵗ⁺¹, t=1…n | B₁ is at T0; exponents n down to 1 |
 | Ordinary-annuity FV | FVₙ = PMT[(1+r)ⁿ−1]/r | each payment at period-end |
 | Ordinary-annuity PV | PV₀ = PMT[1−(1+r)⁻ⁿ]/r | one period before first receipt |
+| Level perpetuity PV | PV₀ = PMT/r | first payment at T1; r>0 |
 | NPV | NPV = Σ CFₜ/(1+k)ᵗ | accept if NPV > 0 |
 | Fisher relation | 1+i = (1+r)(1+h) | nominal flows with nominal rate |
-| IRR interpolation | IRR ≈ L + NPV_L/(NPV_L−NPV_H) × (H−L) | accept conventional project if IRR > k |
+| IRR interpolation | IRR ~ L + NPV_L/(NPV_L−NPV_H) × (H−L) | accept conventional project if IRR > k |
 | Profitability index | PI = PV future inflows/PV outflows | accept if PI > 1 |
 | Discounted payback | full years + unrecovered PV/next-year PV | shorter is less exposed; still ignores later value |
 
-**Integrated NPV order:** initial fixed asset → opening WC → nominal operating lines → depreciation/tax → after-tax operating CF → WC changes → scrap/disposal tax → final WC recovery → discount.
+**Integrated NPV order:** initial fixed asset  ->  opening WC  ->  nominal operating lines  ->  depreciation/tax  ->  after-tax operating CF  ->  WC changes  ->  scrap/disposal tax  ->  final WC recovery  ->  discount.
 
 \pagebreak
 
@@ -76,14 +78,14 @@
 
 **MM equity costs:** no tax `KeL = KeU + (KeU−Kd)(D/E)`; with tax `KeL = KeU + (KeU−Kd)(1−τ)(D/E)`.
 
-**Decision split:** EPS question → maximize EPS at given EBIT. Valuation question → apply named theory. Financing recommendation → mention return **and** risk; EPS alone is not shareholder wealth.
+**Decision split:** EPS question  ->  maximize EPS at given EBIT. Valuation question  ->  apply named theory. Financing recommendation  ->  mention return **and** risk; EPS alone is not shareholder wealth.
 
 ## Page 2 — Risk analysis
 
 | Method | Formula/step | Decision |
 |---|---|---|
 | Expected value | E(X)=Σxp | probability-weighted mean |
-| Variance/SD | σ²=Σx²p−[E(X)]²; σ=√σ² | lower means lower absolute risk |
+| Variance/SD | σ²=Σx²p−[E(X)]²; σ=sqrt(σ²) | lower means lower absolute risk |
 | Coefficient of variation | CV=σ/E(X) | lower risk per unit of expected return |
 | Certainty equivalent | CE(CFₜ)=αₜE(CFₜ); discount at Rf | accept CE-NPV > 0 |
 | Risk-adjusted rate | RADR=Rf+β(Rm−Rf) | discount project CF at RADR |
@@ -157,7 +159,7 @@
 4. **Performance management and control:** compare actual performance with plans and correct deviations.
 5. **Financial reporting:** communicate financial position and performance to users.
 
-The uploaded framework groups these roles as **Enabling** (planning, forecasting, resource allocation), **Shaping** (performance management and control), and **Narrating** (financial reporting). In the digital-age “diamond” model, automation supports routine work and allows finance to contribute more to shaping decisions and explaining results.
+The uploaded material names three finance-function shapes: **hierarchical**, **segregated** and **digital age**. It does not separately define the first two. Its target digital-age framework groups roles as **Enabling** (planning, forecasting, resource allocation), **Shaping** (performance management and control), and **Narrating** (financial reporting). In the “diamond” model, automation supports routine work and allows finance to contribute more to shaping decisions and explaining results.
 
 ### WRITE THIS IN THE EXAM — Financial environment
 
@@ -217,7 +219,7 @@ The five inputs are **present value**, **future value**, **periodic payment**, *
 ### EXAM METHOD — Uneven future value
 
 1. **Given/data:** mark each deposit at its exact beginning/end date.
-2. **Formula:** end-period `FVₙ=ΣCFₜ(1+r)ⁿ⁻ᵗ`; beginning-period `FVₙ=ΣCFₜ(1+r)ⁿ⁻ᵗ⁺¹`.
+2. **Formula:** end-period `FVₙ=ΣCFₜ(1+r)ⁿ⁻ᵗ` for CF at time t; beginning-period `FVₙ=ΣBₜ(1+r)ⁿ⁻ᵗ⁺¹`, where Bₜ is paid at the beginning of period t (B₁ is at T0).
 3. **Working/table:** write each cash flow and its own exponent.
 4. **Decision:** state accumulated value at Tn.
 
@@ -350,11 +352,13 @@ The source names dividend growth and earnings growth methods but does not develo
 
 `DOL=Contribution/EBIT`; `DFL=EBIT/EBT`; `DCL=DOL×DFL=Contribution/EBT`.
 
+The same measures can be checked as `DOL=% change in EBIT/% change in sales`, `DFL=% change in EPS/% change in EBIT`, and `DCL=% change in EPS/% change in sales`.
+
 ### EXAM METHOD — Leverage
 
 1. **Given/data:** output, price, variable cost, fixed operating cost, debt/interest and tax.
 2. **Formula:** prepare the profit ladder, then apply DOL, DFL and DCL.
-3. **Working/table:** Sales → Contribution → EBIT → Interest → EBT → Tax → PAT → EPS.
+3. **Working/table:** Sales  ->  Contribution  ->  EBIT  ->  Interest  ->  EBT  ->  Tax  ->  PAT  ->  EPS.
 4. **Decision:** interpret “times,” and state that coefficients apply around the given activity level.
 
 ### WORKED SOURCE EXAMPLE 1 — Sunrise
@@ -415,6 +419,8 @@ Plan A: equity 60m and debt 20m at 12%, so interest 2.4m and relative share coun
 ## 2.4 Capital-structure theories
 
 ### Comparison answer — WRITE THIS IN THE EXAM
+
+**Relevance theories:** Net Income and Traditional approaches say capital structure affects value/WACC. **Irrelevance theories:** Net Operating Income and MM without tax say financing mix does not affect total firm value/WACC.
 
 | Theory | Key assumptions | Effect of more debt | Optimum under model |
 |---|---|---|---|
@@ -532,19 +538,23 @@ A complete recommendation does not stop at a calculated EPS or WACC. Number the 
 
 ## 3.1 Relevant cash flow and NPV
 
+### WRITE THIS IN THE EXAM — Financial decisions and investment types
+
+The three main financial decisions are **investment**, **financing** and **dividend** decisions. Long-term investment/capital expenditure creates resources such as land and machinery and is judged by return and value. Short-term investment in working capital supports daily operations through cash, inventory and receivables. Both must protect financial stability and purchasing power under inflation.
+
 ### WRITE THIS IN THE EXAM — Relevant cash flow
 
 A **relevant cash flow** is **future**, **incremental** and caused by accepting the project. Use cash flow, not accounting profit.
 
 1. Include acquisition, installation and setup at T0.
 2. Include incremental revenues and cash costs during operation.
-3. Include opportunity costs and side effects where supplied.
-4. Exclude sunk cost already incurred.
+3. Include only cash flows caused by accepting the project.
+4. Classify them as initial, operating and terminal cash flows.
 5. Include tax effects and tax-allowable depreciation.
 6. Invest working capital when required and recover the remaining balance at the end.
 7. Include after-tax disposal/scrap proceeds.
 
-`NPV=Σₜ₌₀ⁿ CFₜ/(1+k)ᵗ`. Accept if NPV>0 because it adds value at the required return.
+`NPV=Σₜ₌₀ⁿ CFₜ/(1+k)ᵗ`. Accept if NPV>0 because it adds value at the required return. For a level perpetuity whose first cash flow is at T1, `PV₀=PMT/k`.
 
 ### EXAM METHOD — Basic NPV
 
@@ -626,7 +636,7 @@ Initial fixed investment $150,000. Annual current-price inflow $45,000 inflates 
 | 3 | 52,093.13 | (260.47) | 51,832.66 |
 | 4 | 54,697.78 | +5,469.78 recovery | 60,167.56 |
 
-NPV at 17.6% ≈ **−$15,725**. **Decision:** reject. The source’s constant-price WC illustration differs because its WC bases are not exactly equivalent; use the nominal integrated method.
+NPV at 17.6% ~ **−$15,725**. **Decision:** reject. The source’s constant-price WC illustration differs because its WC bases are not exactly equivalent; use the nominal integrated method.
 
 ## 3.4 Tax-allowable depreciation and disposal
 
@@ -681,7 +691,7 @@ Operating CFs are ₹3,800,000; ₹3,856,000; ₹3,909,200; ₹3,959,185.60. WC 
 
 Net timeline: T0 `−₹5,200,000`; T1 `₹3,752,000`; T2 `₹3,806,080`; T3 `₹3,857,283.20`; T4 `₹5,309,022.40` including WC recovery.
 
-NPV at 14% ≈ **₹6,766,807**. **Decision:** accept under the stated same-year tax and no-disposal-adjustment assumptions.
+NPV at 14% ~ **₹6,766,807**. **Decision:** accept under the stated same-year tax and no-disposal-adjustment assumptions.
 
 **COMMON MISTAKES:** treating depreciation as cash outflow; forgetting installation in asset basis; taxing cash flow rather than taxable profit; adding back TAD before computing tax; charging the full WC balance each year; putting beginning-year WC at year-end; omitting terminal recovery; mixing real and nominal rates; rounding discount factors before summing.
 **Memory aid:** **Inflate line by line; tax profit; add back TAD; move only ΔWC; recover at the end.**
@@ -695,7 +705,7 @@ NPV at 14% ≈ **₹6,766,807**. **Decision:** accept under the stated same-year
 ### EXAM METHOD — IRR interpolation
 
 1. Find L with positive NPV and H with negative NPV.
-2. Use `IRR≈L+[NPV_L/(NPV_L−NPV_H)](H−L)`.
+2. Use `IRR~L+[NPV_L/(NPV_L−NPV_H)](H−L)`.
 3. State interpolation is approximate.
 4. Compare with required return.
 
@@ -703,13 +713,17 @@ NPV at 14% ≈ **₹6,766,807**. **Decision:** accept under the stated same-year
 
 Cash flows: −2,500; 600; 600; 700; 700; 820. Source trial NPVs: +198 at 8%, −78 at 12%.
 
-`IRR≈8%+[198/(198−(−78))]×4%=10.87%` from rounded NPVs. Exact solution is about 10.81%.
+`IRR~8%+[198/(198−(−78))]×4%=10.87%` from rounded NPVs. Exact solution is about 10.81%.
 
 **Decision:** accept if required return is 9%.
 
 ### WRITE THIS IN THE EXAM — MIRR
 
-**MIRR** separates the investment phase and return phase and uses a realistic finance/reinvestment rate. The source names this concept but gives no full numerical example. Use the exact formula specified by the examiner; conceptually, compound positive flows at the reinvestment rate, discount negative flows at the finance rate, and find the single rate linking them over n periods.
+**MIRR** separates the investment phase and return phase and uses a realistic reinvestment rate. Use the source formula:
+
+`MIRR = (PVR/PVI)^(1/n)(1+rₑ)−1`
+
+Here **PVR** is the present value of positive return-phase cash flows discounted at the reinvestment rate `rₑ`, **PVI** is the present value of negative investment-phase cash flows, and `n` is project life. MIRR gives one rate and avoids the multiple-IRR problem. Accept when MIRR exceeds the required return. The source provides the formula but no full worked MIRR numerical.
 
 ### EXAM METHOD — Discounted payback
 
@@ -738,6 +752,7 @@ Using the same project, rounded PV inflows total $3,317k.
 1. **Divisible projects:** rank by PI and use residual funds for a fraction of the next project.
 2. **Indivisible projects:** compare feasible combinations and choose maximum total NPV.
 3. **Mutually exclusive projects:** choose the feasible single project with highest NPV, not automatically highest PI.
+4. **Multi-period rationing:** use linear programming when funds are limited in several years. The objective is to maximise total project NPV or the present value of cash available for dividends, subject to each year’s capital limit.
 
 ### WORKED SOURCE EXAMPLE 11 — $1m budget
 
@@ -757,7 +772,7 @@ Using the same project, rounded PV inflows total $3,317k.
 
 ### ADDITIONAL SOURCE PRACTICE — Multiple specific inflation rates
 
-Amounts $000. Fixed investment 5,000. Current revenue 2,500 inflates 8%; wages 300 inflate 4%; maintenance 500 inflates 5%; WC is 12% of each year’s nominal revenue, required at the beginning. The exact nominal discount rate from a 10% real rate and 4.56% general inflation is about 15.02%.
+Amounts $000. Fixed investment 5,000. Current revenue 2,500 inflates 8%; wages 300 inflate 4%; maintenance 500 inflates 5%; WC is 12% of each year’s nominal revenue, required at the beginning. The exact nominal discount rate from the source’s 8% real rate and 6.5% general inflation is `(1.08×1.065)−1=15.02%`.
 
 Nominal revenues for Years 1–5 are 2,700; 2,916; 3,149; 3,401; 3,673. Wages are about 312; 324; 337; 351; 365. Maintenance is 525; 551; 579; 608; 638. WC balances are 324, 349.92, 377.91, 408.14 and 440.76; record only increases of about 25.92, 27.99, 30.23 and 32.62, then recover 440.76 at T5.
 
@@ -794,7 +809,7 @@ Methods named in the materials are: probability/expected value, standard deviati
 
 ### WRITE THIS IN THE EXAM
 
-`E(X)=Σxp`; `σ²=Σx²p−[E(X)]²`; `σ=√σ²`; `CV=σ/E(X)`.
+`E(X)=Σxp`; `σ²=Σx²p−[E(X)]²`; `σ=sqrt(σ²)`; `CV=σ/E(X)`.
 
 Expected value is the probability-weighted mean. SD measures **absolute dispersion**. CV measures **risk per unit of expected return**, so it is more useful when expected values differ. Lower SD/CV means lower risk, but the final choice also depends on expected return and the decision-maker’s risk attitude.
 
@@ -812,7 +827,7 @@ Expected value is the probability-weighted mean. SD measures **absolute dispersi
 | A: 2,000(.3), 4,000(.4), 6,000(.3) | 4,000 | 18,400,000 | 1,549.19 | 38.73% |
 | B: 1,000(.1), 3,000(.1), 5,000(.4), 7,000(.3), 9,000(.1) | 5,400 | 33,800,000 | 2,154.07 | 39.89% |
 
-For A: `σ=√(18,400,000−4,000²)=1,549.19`. For B: `σ=√(33,800,000−5,400²)=2,154.07`.
+For A: `σ=sqrt(18,400,000−4,000²)=1,549.19`. For B: `σ=sqrt(33,800,000−5,400²)=2,154.07`.
 
 **Decision:** A has lower absolute and relative risk; B has higher expected value. Without a stated risk-return preference, there is no unconditional winner.
 
@@ -849,7 +864,7 @@ Conventional NPV at 12% was about +$4,578, but risk adjustment reverses the deci
 
 ### WORKED SOURCE EXAMPLE 4 — Mutually exclusive machines
 
-Risk-free rate 5% (used by the source solution although omitted from the question). Machine X CE-adjusted flows T0–T4: −30,000; 14,250; 12,750; 7,000; 6,500. CE-NPV ≈ $6,528. Machine Y: −40,000; 22,500; 16,000; 10,500; 6,000. CE-NPV ≈ $9,942.
+Risk-free rate 5% (used by the source solution although omitted from the question). Machine X CE-adjusted flows T0–T4: −30,000; 14,250; 12,750; 7,000; 6,500. CE-NPV ~ $6,528. Machine Y: −40,000; 22,500; 16,000; 10,500; 6,000. CE-NPV ~ $9,942.
 
 **Decision:** both acceptable; choose Y because projects are mutually exclusive and Y has the larger CE-NPV.
 
@@ -858,6 +873,8 @@ Risk-free rate 5% (used by the source solution although omitted from the questio
 ### WRITE THIS IN THE EXAM
 
 The **RADR** incorporates project systematic risk in the discount rate. Under the source CAPM approach, `RADR=Rf+β(Rm−Rf)`. Higher β gives higher RADR and lower PV of positive future cash flows.
+
+**Quick source check:** if `Rf=4%`, `β=1.1` and `Rm=11%`, then `RADR=4%+1.1(11%−4%)=11.7%`.
 
 ### WORKED SOURCE EXAMPLE 5 — CAPM and NPV
 
@@ -1017,9 +1034,9 @@ Annual RM consumed=`400,000+45,000−65,000=380,000`; production=750,000; COGS=9
 |---|---|---:|
 | R | 55,000/(380,000/365) | 52.82895 |
 | W | 43,150/(750,000/365) | 20.99967 |
-| F | 65,190.5/(915,000/365) | 26.00156 |
+| F | 65,190.5/(915,000/365) | 26.00495 |
 | D | 123,561.5/(1,100,000/365) | 40.99995 |
-| C | 60,289.5/(400,000/365) | 55.01088 |
+| C | 60,289.5/(400,000/365) | 55.01417 |
 | **CCC** | R+W+F+D−C | **85.81935** |
 
 Operating cost 950,000: `WCR=85.81935×950,000/365=223,365.43`; cycles/year=`365/85.81935=4.25`.
@@ -1030,7 +1047,7 @@ Operating cost 950,000: `WCR=85.81935×950,000/365=223,365.43`; cycles/year=`365
 
 RM consumed=`810+230−250=790`; production cost=`790+600+50−52=1,388`; COGS=`1,388+260−300=1,348`; operating cost=`1,348+240=1,588`.
 
-Averages: RM 240, WIP 51, FG 280, debtors 415, creditors 275. Assume all ₹2,000 lakh sales are credit sales.
+Averages: RM 240, WIP 51, FG 280, debtors 415, creditors 275. Assume all ₹2,000 lakh sales are credit sales and all ₹810 lakh purchases are credit purchases, matching the source calculation.
 
 Precise days: `R=110.8861`; `W=13.4114`; `F=75.8160`; `D=75.7375`; `C=123.9198`. CCC=`151.9312 days`.
 
@@ -1060,7 +1077,7 @@ For five observations, Σx=75, Σy=17.5, Σx²=1,205, Σxy=276.5; x̄=15, ȳ=3.5
 `b=[5(276.5)−75(17.5)]/[5(1,205)−75²]=0.175`; `a=3.5−0.175(15)=0.875`.
 
 `WC ($m)=0.875+0.175 Sales ($m)`.
-At sales $22m, `WC=0.875+0.175(22)=$4.725m`; `r≈0.98995`.
+At sales $22m, `WC=0.875+0.175(22)=$4.725m`; `r~0.98995`.
 
 **Decision:** forecast WC is $4.725m; relationship is strongly positive, subject to regression assumptions.
 
@@ -1068,7 +1085,7 @@ At sales $22m, `WC=0.875+0.175(22)=$4.725m`; `r≈0.98995`.
 
 x̄=600, ȳ=147, Σdx²=25,000, Σdy²=1,830, Σdxdy=6,750.
 
-`b=6,750/25,000=0.27`; `a=147−0.27(600)=−15 lakh`; `r=6,750/√(25,000×1,830)=0.99795`.
+`b=6,750/25,000=0.27`; `a=147−0.27(600)=−15 lakh`; `r=6,750/sqrt(25,000×1,830)=0.99795`.
 
 `WC (₹ lakh)=−15+0.27 Sales (₹ lakh)`.
 At sales ₹800 lakh, WC=`−15+216=₹201 lakh` = ₹20.1 million = ₹2.01 crore.
@@ -1143,13 +1160,22 @@ Reasons include **synergy**, increased market share/power, faster access to capa
 4. **Final agreement and closing:** execute share-purchase or asset-purchase agreement and obtain required approvals.
 5. **Post-merger integration:** combine people, systems and operations so expected synergy is actually realised.
 
-Approval procedures are jurisdiction/date specific; use the legal route stated in the question rather than memorising an outdated court label.
+### WRITE THIS IN THE EXAM — Legal procedure stated in the material
+
+1. Intimate the stock exchanges.
+2. Boards approve the draft amalgamation proposal.
+3. Apply to the relevant High Courts.
+4. Obtain shareholder approval.
+5. Obtain approvals from financial institutions where loan agreements require them.
+6. Obtain final High Court approvals.
+
+Write this six-step sequence when the question asks for the procedure **as taught in the uploaded material**. For any question that supplies a different current legal framework, follow the framework stated in that question.
 
 ### WRITE THIS IN THE EXAM — Form of consideration
 
-1. **Cash:** certain and liquid for target holders; can be fast, but may use debt/new equity and worsen gearing.
-2. **Share exchange:** preserves cash and lets target holders participate, but dilutes ownership/EPS and exposes both groups to price risk.
-3. **Mixed offer:** balances cash certainty and continuing participation while reducing immediate cash need.
+1. **Cash:** gives target holders certainty and liquidity. If funded with debt it can worsen gearing; if funded by a new equity issue it dilutes existing ownership but may reduce gearing.
+2. **Share exchange:** preserves cash and can improve gearing, but dilutes existing ownership/control. EPS may increase, decrease or stay unchanged depending on the exchange ratio and combined earnings.
+3. **Mixed offer:** balances cash certainty and continuing participation while reducing the immediate cash need and limiting, but not removing, dilution.
 
 ## 6.3 Bid strategy, defences and related structures
 
@@ -1157,7 +1183,7 @@ Approval procedures are jurisdiction/date specific; use the legal route stated i
 
 1. **Poison pill:** discounted rights dilute a hostile acquirer.
 2. **Staggered board:** directors retire in classes, delaying board control.
-3. **Golden parachute:** costly benefits payable to executives after control change.
+3. **Golden parachute:** costly benefits payable to executives if they are terminated following a change of control.
 4. **Shark repellent/supermajority:** charter rules require enhanced approval.
 5. **Dual-class shares:** insiders retain superior voting rights.
 6. **Fair-price amendment:** protects holders against unequal/two-tier terms.
@@ -1201,7 +1227,7 @@ Ratios named in the source include current ratio, quick ratio, gross/operating m
 
 ### WORKED SOURCE EXAMPLE 1 — A acquires B by NAV/EPS/market price
 
-₹10 face-value equity capital: A ₹2,00,000 → 20,000 shares; B ₹1,00,000 → 10,000 shares. Preference capital A ₹40,000; debentures A ₹30,000/B ₹10,000; assets A ₹3,46,000/B ₹1,22,000; PAT after preference dividend A ₹48,000/B ₹30,000; market prices ₹24/₹27.
+₹10 face-value equity capital: A ₹2,00,000  ->  20,000 shares; B ₹1,00,000  ->  10,000 shares. Preference capital A ₹40,000; debentures A ₹30,000/B ₹10,000; assets A ₹3,46,000/B ₹1,22,000; PAT after preference dividend A ₹48,000/B ₹30,000; market prices ₹24/₹27.
 
 **NAV basis:** A equity NAV=`346,000−30,000−40,000=₹276,000`, or ₹13.80/share. B NAV=`122,000−10,000=₹112,000`, or ₹11.20/share. `q=11.20/13.80=0.811594`; exact mechanical new shares 8,115.94, so actual terms need rounding/fraction settlement.
 
@@ -1209,7 +1235,7 @@ Ratios named in the source include current ratio, quick ratio, gross/operating m
 
 **Market-price basis:** `q=27/24=1.125`; issue 11,250 shares.
 
-**Decision:** A prefers NAV on least-dilution grounds, but target B may reject because `0.811594×₹24≈₹19.48`, below B’s ₹27 market price. “Fewest shares” is not proof of fair value.
+**Decision:** A prefers NAV on least-dilution grounds, but target B may reject because `0.811594×₹24~₹19.48`, below B’s ₹27 market price. “Fewest shares” is not proof of fair value.
 
 **Use this correct form:** share count is equity share capital divided by **face value**, not market price.
 
@@ -1316,14 +1342,14 @@ This ledger consolidates source slips already explained beside the relevant meth
 - [ ] Remember: beginning exponents run n to 1.
 
 ## M2 — Capital Structure Decision
-- [ ] Can build Sales→Contribution→EBIT→EBT→PAT→EPS ladder.
+- [ ] Can build Sales -> Contribution -> EBIT -> EBT -> PAT -> EPS ladder.
 - [ ] Know DOL, DFL, DCL and indifference EBIT.
 - [ ] Can distinguish NI, Traditional, NOI, MM no-tax and MM tax calculation order.
 - [ ] Use market weights, after-tax debt and `VL=VU+τD`.
 - [ ] Can explain why practical debt is below MM-tax theoretical optimum.
 
 ## M3 — Investment Appraisal
-- [ ] Include only future incremental cash flows; exclude sunk costs.
+- [ ] Include only future incremental cash flows and classify them as initial, operating or terminal.
 - [ ] Match nominal flows/rate and real flows/rate.
 - [ ] Put opening WC at T0, changes at prior year-end, recovery at terminal date.
 - [ ] Compute taxable profit, tax, add-back TAD and disposal adjustment.
@@ -1357,8 +1383,8 @@ This ledger consolidates source slips already explained beside the relevant meth
 | Lump FV/PV | `FVₙ=PV₀(1+r)ⁿ`; `PV₀=FVₙ/(1+r)ⁿ` |
 | m-times compounding | `FV=PV(1+j/m)ᵐⁿ` |
 | Uneven FV, end | `ΣCFₜ(1+r)ⁿ⁻ᵗ` |
-| Uneven FV, beginning | `ΣCFₜ(1+r)ⁿ⁻ᵗ⁺¹` |
-| Annuity FV/PV | `PMT[(1+r)ⁿ−1]/r`; `PMT[1−(1+r)⁻ⁿ]/r` |
+| Uneven FV, beginning | `ΣBₜ(1+r)ⁿ⁻ᵗ⁺¹`, t=1…n; B₁ is paid at T0 |
+| Annuity FV/PV | `PMT[(1+r)ⁿ−1]/r`; `PMT[1−(1+r)⁻ⁿ]/r`; perpetuity PV=`PMT/r` |
 | CAPM/beta | `Ke=Rf+β(Rm−Rf)`; `β=Cov(Rp,Rm)/Var(Rm)` |
 | WACC | `(E/V)Ke+(D/V)Kd(1−τ)` |
 | Leverage | `DOL=C/EBIT`; `DFL=EBIT/EBT`; `DCL=C/EBT` |
@@ -1372,10 +1398,11 @@ This ledger consolidates source slips already explained beside the relevant meth
 | Tax operating CF | `(revenue−cash cost)(1−τ)+τTAD` |
 | WC project CF | intermediate `−ΔWC`; terminal `+WC recovery` |
 | IRR interpolation | `L+[NPV_L/(NPV_L−NPV_H)](H−L)` |
+| MIRR | `(PVR/PVI)^(1/n)(1+rₑ)−1` |
 | PI | `PV inflows/PV outflows = 1+NPV/I₀` for one initial outflow |
 | DPP | `full years+unrecovered PV/next discounted CF` |
 | Expected value | `E(X)=Σxp` |
-| Variance/SD/CV | `σ²=Σx²p−E(X)²`; `σ=√σ²`; `CV=σ/E(X)` |
+| Variance/SD/CV | `σ²=Σx²p−E(X)²`; `σ=sqrt(σ²)`; `CV=σ/E(X)` |
 | CE and RADR | `CE(CF)=αE(CF)` discounted at Rf; `RADR=Rf+β(Rm−Rf)` |
 | Sensitivity | `base NPV/PV affected variable×100` |
 | Net WC/CCC | `WC=CA−CL`; `CCC=R+W+F+D−C` |
